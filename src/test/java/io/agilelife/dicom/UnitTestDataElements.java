@@ -105,7 +105,7 @@ class UnitTestDataElements
 	{
 		AttributeTag fmiglTag = AttributeTag.parseTag ("00020000");
 		Attribute<?> fmigl = new FileMetaInformationGroupLength ();
-		assertEquals (fmiglTag, fmigl.attributeTag);
-		assertEquals (ValueRepresentation.UL, fmigl.valueRepresentation);
+		assertEquals (fmiglTag, fmigl.getAttributeTag ());
+		assertEquals (ValueRepresentation.UL, fmigl.getValueRepresentation ());
 	}
 }

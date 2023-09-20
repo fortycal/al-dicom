@@ -19,8 +19,8 @@ public class AttributeTag implements Comparable<AttributeTag>
 		setElementNumber (elementNumber);
 	}
 	
-	public void setGroupNumber (String s) { this.groupNumber = convert (s); }
-	public void setElementNumber (String s) { this.elementNumber = convert (s); }
+	private void setGroupNumber (String s) { this.groupNumber = convert (s); }
+	private void setElementNumber (String s) { this.elementNumber = convert (s); }
 	
 	public String getGroupNumberString () { return Integer.toHexString (groupNumber); }
 	public String getElementNumberString () { return Integer.toHexString (elementNumber); }

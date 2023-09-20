@@ -50,7 +50,7 @@ public class ElementDictionary
 	 * 
 	 * @return this dictionary for fluent chaining
 	 */
-	public ElementDictionary add (AttributeTag tag, String name, String keyword, ValueRepresentation vr, ValueMultiplicity vm, String retirement)
+	public ElementDictionary add (AttributeTag tag, String name, String keyword, ValueRepresentation<?> vr, ValueMultiplicity vm, String retirement)
 	{
 		return add (new ElementDictionaryEntry (tag, name, keyword, new ValueRepresentation[] {vr}, vm, retirement));
 	}
@@ -61,7 +61,7 @@ public class ElementDictionary
 	 * 
 	 * @return this dictionary for fluent chaining
 	 */
-	public ElementDictionary add (AttributeTag tag, String name, String keyword, ValueRepresentation[] vra, ValueMultiplicity vm, String retirement)
+	public ElementDictionary add (AttributeTag tag, String name, String keyword, ValueRepresentation<?>[] vra, ValueMultiplicity vm, String retirement)
 	{
 		return add (new ElementDictionaryEntry (tag, name, keyword, vra, vm, retirement));
 	}

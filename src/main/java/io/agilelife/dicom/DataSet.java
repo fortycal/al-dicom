@@ -21,10 +21,10 @@ public class DataSet
 	public void add (Attribute<?> a)
 	{
 		// https://dicom.nema.org/medical/dicom/2023c/output/chtml/part10/sect_7.2.html
-		if (a.attributeTag.equals (TransferSyntaxUID.DEFINITION.getTag ()))
+		if (a.getAttributeTag ().equals (TransferSyntaxUID.DEFINITION.getTag ()))
 			throw new IllegalArgumentException ("A DataSet may not define or change its own Transfer​ Syntax.");
 		
-		attributes.put (a.attributeTag, a);
+		attributes.put (a.getAttributeTag (), a);
 	}
 	
 	public void pad (int byteCount, char padWith)

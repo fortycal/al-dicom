@@ -52,7 +52,7 @@ public class DictionaryEntryMapDeserializer extends JsonDeserializer<Map<Attribu
 					AttributeTag t = AttributeTag.parseTag (s);
 					String n = entry.get ("name").asText();
 					String k = entry.get ("keyword").asText ();
-					ValueRepresentation[] v = parseVR (entry.get ("vr"));
+					ValueRepresentation<?>[] v = parseVR (entry.get ("vr"));
 					ValueMultiplicity m = ValueMultiplicity.parseMult (entry.get ("vm").asText ());
 					String r = entry.get ("retirement").asText ();
 					
@@ -98,12 +98,12 @@ public class DictionaryEntryMapDeserializer extends JsonDeserializer<Map<Attribu
 		return ia;
 	}
 	
-	private ValueRepresentation[] parseVR (JsonNode vrn)
+	private ValueRepresentation<?>[] parseVR (JsonNode vrn)
 	{
 		if (vrn.isArray ())
 		{
 			int size = ((ArrayNode) vrn).size ();
-			ValueRepresentation[] ret = new ValueRepresentation[size];
+			ValueRepresentation<?>[] ret = new ValueRepresentation[size];
 			for (int i=0; i<size; i++)ret[i] = ValueRepresentation.parseRep (vrn.get (i).asText ());
 			return ret;
 		}

@@ -11,16 +11,16 @@ public class ElementDictionaryEntry
 	private AttributeTag tag;
 	private String name;
 	private String keyword;
-	private ValueRepresentation[] vr;
+	private ValueRepresentation<?>[] vr;
 	private ValueMultiplicity vm;
 	private String retirement;
 	
-	public ElementDictionaryEntry (AttributeTag tag, String name, String keyword, ValueRepresentation vr, ValueMultiplicity vm, String retirement)
+	public ElementDictionaryEntry (AttributeTag tag, String name, String keyword, ValueRepresentation<?> vr, ValueMultiplicity vm, String retirement)
 	{
 		this (tag, name, keyword, new ValueRepresentation[] {vr}, vm, retirement);
 	}
 	
-	public ElementDictionaryEntry (AttributeTag tag, String name, String keyword, ValueRepresentation[] vr, ValueMultiplicity vm, String retirement)
+	public ElementDictionaryEntry (AttributeTag tag, String name, String keyword, ValueRepresentation<?>[] vr, ValueMultiplicity vm, String retirement)
 	{
 		this.tag = tag;
 		this.name = name;
@@ -39,8 +39,8 @@ public class ElementDictionaryEntry
 	public String getKeyword () { return keyword; }
 	public void setKeyword (String keyword) { this.keyword = keyword; }
 	
-	public ValueRepresentation[] getVr () { return vr; }
-	public void setValueRepresentation (ValueRepresentation... vr) { this.vr = vr; }
+	public ValueRepresentation<?>[] getVr () { return vr; }
+	public void setValueRepresentation (ValueRepresentation<?>... vr) { this.vr = vr; }
 
 	public ValueMultiplicity getVm () { return vm; }
 	public void setValueMultiplicity (ValueMultiplicity vm) { this.vm = vm; }
