@@ -1,18 +1,21 @@
-package io.agilelife.dicom.dict;
+package io.agilelife.dicom;
 
 import java.util.Arrays;
 
-import io.agilelife.dicom.AttributeTag;
-import io.agilelife.dicom.ValueMultiplicity;
-import io.agilelife.dicom.ValueRepresentation;
-
 public class ElementDictionaryEntry
 {
+	/** The Attribute Tag is a pair of 16-bit unsigned integers of form (Group number, Element number). 
+	 * The tag uniquely identifies the element.*/
 	private AttributeTag tag;
+	
 	private String name;
+	
 	private String keyword;
+	
 	private ValueRepresentation<?>[] vr;
+	
 	private ValueMultiplicity vm;
+	
 	private String retirement;
 	
 	public ElementDictionaryEntry (AttributeTag tag, String name, String keyword, ValueRepresentation<?> vr, ValueMultiplicity vm, String retirement)

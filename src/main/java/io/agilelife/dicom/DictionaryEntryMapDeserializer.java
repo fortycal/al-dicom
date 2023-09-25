@@ -1,4 +1,4 @@
-package io.agilelife.dicom.dict;
+package io.agilelife.dicom;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,10 +14,6 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-
-import io.agilelife.dicom.AttributeTag;
-import io.agilelife.dicom.ValueMultiplicity;
-import io.agilelife.dicom.ValueRepresentation;
 
 public class DictionaryEntryMapDeserializer extends JsonDeserializer<Map<AttributeTag, ElementDictionaryEntry>>
 {
@@ -53,7 +49,7 @@ public class DictionaryEntryMapDeserializer extends JsonDeserializer<Map<Attribu
 					String n = entry.get ("name").asText();
 					String k = entry.get ("keyword").asText ();
 					ValueRepresentation<?>[] v = parseVR (entry.get ("vr"));
-					ValueMultiplicity m = ValueMultiplicity.parseMult (entry.get ("vm").asText ());
+					ValueMultiplicity m = ValueMultiplicity.parse (entry.get ("vm").asText ());
 					String r = entry.get ("retirement").asText ();
 					
 					ret.put (t, new ElementDictionaryEntry (t, n, k, v, m, r));

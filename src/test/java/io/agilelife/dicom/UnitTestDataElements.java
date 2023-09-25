@@ -7,9 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import io.agilelife.dicom.attribute.FileMetaInformationGroupLength;
-import io.agilelife.dicom.dict.ElementDictionary;
-import io.agilelife.dicom.dict.ElementDictionaryEntry;
+import io.agilelife.dicom.macro.FileMeta;
 
 class UnitTestDataElements
 {
@@ -72,10 +70,10 @@ class UnitTestDataElements
 	@Test
 	void testValueMultiplicityParse ()
 	{
-		assertEquals (ValueMultiplicity.exactly (1), ValueMultiplicity.parseMult ("1"));
-		assertEquals (ValueMultiplicity.nOrMore (1), ValueMultiplicity.parseMult ("1-n"));
-		assertEquals (ValueMultiplicity.rangeInclusive (1, 2), ValueMultiplicity.parseMult ("1-2"));
-		assertEquals (ValueMultiplicity.multipleOf (2), ValueMultiplicity.parseMult ("2-2n"));
+		assertEquals (ValueMultiplicity.exactly (1), ValueMultiplicity.parse ("1"));
+		assertEquals (ValueMultiplicity.nOrMore (1), ValueMultiplicity.parse ("1-n"));
+		assertEquals (ValueMultiplicity.rangeInclusive (1, 2), ValueMultiplicity.parse ("1-2"));
+		assertEquals (ValueMultiplicity.multipleOf (2), ValueMultiplicity.parse ("2-2n"));
 	}
 	
 	@Test
@@ -104,8 +102,24 @@ class UnitTestDataElements
 	void testWellKnownAttributes ()
 	{
 		AttributeTag fmiglTag = AttributeTag.parseTag ("00020000");
-		Attribute<?> fmigl = new FileMetaInformationGroupLength ();
+		Attribute<?> fmigl = new FileMeta ().fileMetaInformationGroupLength;
 		assertEquals (fmiglTag, fmigl.getAttributeTag ());
-		assertEquals (ValueRepresentation.UL, fmigl.getValueRepresentation ());
+		assertEquals (ValueRepresentation.UL, fmigl.getVr ());
 	}
+	
+//	@Test
+//	void testStandardDictionaryMultiVr ()
+//	{
+//		final ElementDictionary DICT = ElementDictionary.getStandard ();
+//		for (AttributeTag tag : DICT.getTags ())
+//		{
+//			ElementDictionaryEntry def = DICT.get (tag);
+//			@SuppressWarnings("rawtypes")
+//			ValueRepresentation[] defVr = def.getVr ();
+//			if (defVr.length > 1)
+//			{
+//				System.out.println (def);
+//			}
+//		}
+//	}
 }

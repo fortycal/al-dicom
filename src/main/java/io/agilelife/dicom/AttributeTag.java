@@ -1,7 +1,10 @@
 package io.agilelife.dicom;
 
 /**
- * A.k.a Data Element Tag
+ * A.k.a Data Element Tag.
+ * 
+ * An Attribute Tag is a pair of 16-bit unsigned integers of form (Group number, Element number).  
+ * The tag uniquely identifies the element.
  * 
  * @author Elliott Wade
  */

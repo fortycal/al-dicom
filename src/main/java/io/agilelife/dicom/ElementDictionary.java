@@ -1,17 +1,13 @@
-package io.agilelife.dicom.dict;
+package io.agilelife.dicom;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import io.agilelife.dicom.Attribute;
-import io.agilelife.dicom.AttributeTag;
-import io.agilelife.dicom.ValueMultiplicity;
-import io.agilelife.dicom.ValueRepresentation;
 
 public class ElementDictionary
 {
@@ -21,14 +17,22 @@ public class ElementDictionary
 	public String version = "<unknown>";
 	
 	@JsonDeserialize(using = DictionaryEntryMapDeserializer.class)
-	public Map<AttributeTag, ElementDictionaryEntry> entries = Collections.synchronizedSortedMap (new TreeMap<> ());
+	public final Map<AttributeTag, ElementDictionaryEntry> entries = Collections.synchronizedSortedMap (new TreeMap<> ());
 	
-	public ElementDictionary () {}
+	public ElementDictionary () { }
 	
 	public ElementDictionary (String name, String version)
 	{
 		this.name = name;
 		this.version = version;
+	}
+	
+	public AttributeTag[] getTags ()
+	{
+		ArrayList<AttributeTag> al = new ArrayList<> ();
+		for (AttributeTag t : entries.keySet ()) al.add (t);
+		al.sort (null);
+		return al.toArray (new AttributeTag[] {});
 	}
 	
 	/**
@@ -110,11 +114,11 @@ public class ElementDictionary
 //		module.addDeserializer (null, new DictionaryEntryMapDeserializer ());
 //		mapper.registerModule (module);
 		
-		final String JSON_FILE = "io/agilelife/dicom/dict/dict-standard-2023c2.json";
+		final String JSON_FILE = "io/agilelife/dicom/dict/dict-standard-2023c.json";
 		try (InputStream in=Thread.currentThread ().getContextClassLoader().getResourceAsStream (JSON_FILE))
 		{
 			ElementDictionary ret = mapper.readValue (in, ElementDictionary.class);
-			return ret;
+			return standardDictionary = ret;
 		}
 		catch (Exception e)
 		{

@@ -37,10 +37,20 @@ public abstract class ValueRepresentation <V extends Object>
 	public String getDescription () { return description; }
 	
 	/**
-	 * Override to throw <code>IllegalArgumentException</code> in the case of an invalid value.
-	 * @param candidateValue Value to check
+	 * Override to throw <code>IllegalArgumentException</code> in the case of an invalid set of values.
+	 * By default checks each value by delegating to <code>validate (candidate)</code>.
+	 * @param candidates Values to check
 	 */
-	public abstract void validate (V candidateValue);
+	public void validate (V[] candidates)
+	{
+		for (V v : candidates) { validate (v); }
+	}
+	
+	/**
+	 * Override to throw <code>IllegalArgumentException</code> in the case of an invalid single value.
+	 * @param candidate Value to check
+	 */
+	public abstract void validate (V candidate);
 	
 	@Override
 	public String toString () { return code; }

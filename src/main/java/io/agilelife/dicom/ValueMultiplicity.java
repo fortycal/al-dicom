@@ -5,7 +5,12 @@ public abstract class ValueMultiplicity
 	public final int minimum;
 	public final int maximum;
 	
-	public ValueMultiplicity (int minimum, int maximum)
+	/**
+	 * Cannot be directly instantiated.  Use one of the static factory methods of this class instead.
+	 * @param minimum
+	 * @param maximum
+	 */
+	private ValueMultiplicity (int minimum, int maximum)
 	{
 		this.minimum = minimum;
 		this.maximum = maximum;
@@ -27,7 +32,7 @@ public abstract class ValueMultiplicity
 	public static ValueMultiplicity nOrMore (int min) { return new RangeInclusive (min, Integer.MAX_VALUE); }
 	public static ValueMultiplicity multipleOf (int i) { return new MultipleOf (i); }
 	
-	public static ValueMultiplicity parseMult (String s)
+	public static ValueMultiplicity parse (String s)
 	{
 		String t = s.trim ().replace (" ", "");
 		try {

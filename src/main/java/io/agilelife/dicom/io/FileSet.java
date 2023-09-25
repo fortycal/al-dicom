@@ -1,4 +1,4 @@
-package io.agilelife.dicom;
+package io.agilelife.dicom.io;
 
 import java.util.ArrayList;
 import java.util.List;
