@@ -24,12 +24,19 @@ public class Attribute<V extends Object> implements IUsable
 	
 	public Attribute (ElementDictionaryEntry definition, Usage usage)
 	{
+		if (definition == null)
+			throw new IllegalArgumentException ("Cannot create Attribute because definition is null.");
+		
 		this.definition = definition;
 		this.selectedVr = 0;
 		this.usage = usage;
 	}
 	
 	public AttributeTag getAttributeTag () { return definition.getTag (); }
+	
+	public String getName () { return definition.getName (); }
+	
+	public String getKeyword () { return definition.getKeyword (); }
 	
 	@SuppressWarnings("unchecked")
 	public ValueRepresentation<V> getVr () { return (ValueRepresentation<V>) definition.getVr ()[selectedVr]; }

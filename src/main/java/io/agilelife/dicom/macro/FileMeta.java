@@ -73,27 +73,27 @@ public class FileMeta extends DicomNode<Void>
 	}
 	public final ReceivingApplicationEntityTitle receivingApplicationEntityTitle = new ReceivingApplicationEntityTitle ();
 	
-	public class SourcePresentationAddress extends Attribute<String> {
+	public final static class SourcePresentationAddress extends Attribute<String> {
 		public SourcePresentationAddress () { super (ElementDictionary.getStandard ().get ("(0002,0026)"), Usage.THREE); }
 	}
 	public final SourcePresentationAddress sourcePresentationAddress = new SourcePresentationAddress ();
 	
-	public class SendingPresentationAddress extends Attribute<String> {
+	public final static class SendingPresentationAddress extends Attribute<String> {
 		public SendingPresentationAddress () { super (ElementDictionary.getStandard ().get ("(0002,0027)"), Usage.THREE); }
 	}
 	public final SendingPresentationAddress sendingPresentationAddress = new SendingPresentationAddress ();
 	
-	public class ReceivingPresentationAddress extends Attribute<String> {
+	public final static class ReceivingPresentationAddress extends Attribute<String> {
 		public ReceivingPresentationAddress () { super (ElementDictionary.getStandard ().get ("(0002,0028)"), Usage.THREE); }
 	}
 	public final ReceivingPresentationAddress receivingPresentationAddress = new ReceivingPresentationAddress ();
 	
-	public class PrivateInformationCreatorUID extends Attribute<String> {
+	public final static class PrivateInformationCreatorUID extends Attribute<String> {
 		public PrivateInformationCreatorUID () { super (ElementDictionary.getStandard ().get ("(0002,0100)"), Usage.THREE); }
 	}
 	PrivateInformationCreatorUID privateInformationCreatorUID = new PrivateInformationCreatorUID ();
 	
-	public class PrivateInformation extends Attribute<byte[]> {
+	public final static class PrivateInformation extends Attribute<byte[]> {
 		public PrivateInformation () { super (ElementDictionary.getStandard ().get ("(0002,0102)"), Usage.ONE_C); }
 	}
 	PrivateInformation privateInformation = new PrivateInformation ();

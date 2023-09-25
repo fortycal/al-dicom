@@ -41,5 +41,5 @@ public enum Usage
 		this.desc = desc;
 	}
 	
-	public String toString () { return desc + "(" + code + ")"; }
+	public String toString () { return desc + " (" + code + ")"; }
 }

@@ -107,6 +107,13 @@ class UnitTestDataElements
 		assertEquals (ValueRepresentation.UL, fmigl.getVr ());
 	}
 	
+	@Test
+	void testDicomTreePrettyPrint ()
+	{
+		FileMeta fm = new FileMeta ();
+		System.out.println (fm);
+	}
+	
 //	@Test
 //	void testStandardDictionaryMultiVr ()
 //	{
